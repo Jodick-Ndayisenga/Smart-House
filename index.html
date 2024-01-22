@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+    <html>
+    <title>EEIA 2023</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css" />
+    <body>
+    <div align = "center" >
+      <!-- <img  id = "image" src = "images/image.png" alt=""/> -->
+      <!-- """+image+""" -->
+      <h1>EEIA 2023 - DOMOTIQUE</h1>
+    </div>
+    <div align "center" class="w3-container">
+      <div class="w3-bar w3-gray" >
+        <button class="w3-bar-item w3-button tablink w3-blue" onclick="openCity(event,'Capteurs')">Capteurs</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Control')">Control</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'APropos')">A Propos</button>
+      </div>
+      <div id="Capteurs" class="w3-container w3-border city">
+        <h2>Capteurs</h2>
+        <p>Capteurs is the capital city of England.</p>
+        <span class="dht-labels">Temperature: </span> 
+        <span id="temperature">{{temperature}}</span>
+        <sup class="units">&deg;C</sup>
+        
+        <p></p>
+        <span class="dht-labels">Humidite: </span>
+        <img  id = "image" src = "humicon.svg" alt=""/>
+        <span >{{humidity}} %</span>
+        <p></p>
+         <p></p>
+      </div>
+
+      <div id="Control" class="w3-container w3-border city" style="display:none">
+        <h2>Control</h2>
+        <p>
+            <span class="text-danger"><strong>Lampe 1 :</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;</span>
+            <button class="btn btn-success" onclick="set_on(1)">Allumer</button>
+            &nbsp&nbsp&nbsp;
+            <button class="btn btn-danger " onclick="set_off(1)">Eteindre</button>
+            <strong>{{gpio1_state}}</strong></p>
+        </p>
+        <p>
+            <span class="text-danger"><strong>Lampe 2 :</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;</span>
+            <input class="btn btn-success" type ="button" value="Allumer" onclick="set_on(2)">
+            
+            &nbsp&nbsp&nbsp;
+            <button class="btn btn-danger" onclick="set_off(2)" >Eteindre</button>
+            <strong>{{gpio2_state}}</strong>
+        </p>
+        <p>
+            <span class="text-danger"><strong>Lampe 3 :</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;</span>
+            <button class="btn btn-success" onclick="set_on(3)" >Allumer</button>
+            &nbsp&nbsp&nbsp;
+            <button class="btn btn-danger" onclick="set_off(3)" >Eteindre</button>
+            <strong>{{gpio3_state}}</strong>
+        </p>
+        <p>
+            <span class="text-danger"><strong>Prise . . .:</strong>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;</span>
+            <button class="btn btn-success" onclick="set_on(4)">Marche</button>
+            &nbsp&nbsp&nbsp;
+            <button class="btn btn-danger" onclick="set_off(4)" >Arret . . .</button>
+            <strong>{{gpio4_state}}</strong>
+        </p>
+    </div>
+
+    <div id="APropos" class="w3-container w3-border city" style="display:none">
+        <h2>A Propos</h2>
+        <p>...........................................</p>
+    </div>
+    </div>
+    </body>
+    </html>
+
+    <script>
+    function openCity(evt, cityName){
+      var i, x, tablinks;
+      x = document.getElementsByClassName("city");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < x.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" w3-blue", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " w3-blue";
+    }
+    </script>
+<script src="script.js"></script>
